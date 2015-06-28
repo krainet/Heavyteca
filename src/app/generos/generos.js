@@ -28,6 +28,11 @@
                     $scope.model.data=data;
                 });
             };
+
+            $scope.gotoAlbum = function(id_album){
+                $state.go('root.albums',{'id_album':parseInt(id_album)});
+            };
+
             init();
         }]);
 

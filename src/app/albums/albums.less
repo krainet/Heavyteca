@@ -1,12 +1,13 @@
 /* Less file for albums - remember to import in main.less */
 
 .gridimage{
-  width:50%;
-  height:50%;
+  width:45%;
+  height:45%;
+  margin-bottom: 6px;
 }
 
 .topborder{
-  border-top: 1px dotted blue;
+  border: 1px dotted #dfdfdf;
   margin-top: 10px;
 }
 
@@ -15,20 +16,80 @@
 }
 
 .backgroundgrid{
-  background-image: -webkit-gradient(radial, left center, 0, left center, 963, color-stop(0, #FFFFFF), color-stop(1, #EFD5D7));
+  background-image: -webkit-gradient(radial, left center, 0, left center, 963, color-stop(0, #fdfdfd), color-stop(1, #2C2121));
+  border-radius: 10px;
 }
 
 .img75percent{
+  height:75%;
+  width:75%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.img50percent{
   height:50%;
   width:50%;
   text-align: center;
   margin: 0 auto;
 }
 
+.img25percent{
+  height:25%;
+  width:25%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.img35percent{
+  height:35%;
+  width:35%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .gridtitle{
-  font-size:3em;
+  font-size:2.5em;
+}
+
+.pulldown{
+  margin-bottom: 1px;
 }
 
 .ultoleft{
   text-align:left;
+}
+
+.sectiontitle{
+  font-size:2em;
+}
+
+.cellAlbum{
+  border-radius:5px;
+  margin-top:5px;
+  background-color:grey;
+}
+
+.cellAlbum div{
+  vertical-align: middle;
+}
+
+.modal-header {
+  padding:9px 15px;
+  border-bottom:1px solid #eee;
+  background-color: #203c31;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color:lightgray;
+}
+
+.modal-content {
+  background-color: darkgray;
+}
+.modal-body {
+  background-color: darkgrey;
 }

@@ -2,8 +2,8 @@
  * Api Test Módule
  */
 angular.module('bandasService', [])
-        .factory('bandasService', ['$resource', '$q', '$log',
-            function ($resource, $q, $log) {
+        .factory('bandasService', ['$resource', '$q', '$log','$filter',
+            function ($resource, $q, $log,$filter) {
                 return {
                     api: function (extra_route) {
                         if (!extra_route) {
@@ -24,12 +24,16 @@ angular.module('bandasService', [])
                             }
                         });
                     },
-                    getBandas: function () {
+                    getBandas: function (id_banda) {
                         //Service action with promise resolve (then)
                         var def = $q.defer();
                         this.api().get({}, {}, function (data) {
                             $log.warn('Api::data:: ');
                             $log.warn(data);
+                            if(id_banda){
+                                var tmpData=$filter('filter')(data, {'name':id_banda}, true);
+                                data=tmpData;
+                            }
                             def.resolve(data);
                         }, function (err) {
                             def.reject(err);

@@ -1,22 +1,11 @@
 <div class="row">
-    <div class="column col-md-12">
-        <img src="../assets/imglocal/guitarbackground.png" class="img-responsive img75percent">
-        <span class="gridtitle">HEAVY TECA - {{model.pageTitle}}</span>
+    <div class="column col-md-6 text-left">
+        <img style="margin-left:2px;" src="../assets/imglocal/guitarbackground.png" class="img-responsive img35percent"><span style="font-size: 2em;">HEAVYTECA</span>
+    </div>
+    <div class="column col-md-6">
+        <div><span class="pull-right pulldown sectiontitle">Albums</span></div>
     </div>
 </div>
 
-<p>&nbsp;</p>
+<table-element ng-repeat="item in model.data" model="item"></table-element>
 
-<div class="row">
-    <div class="column col-md-12 topborder backgroundgrid" ng-repeat="item in model.data">
-        <div class="column col-md-4 col10xmargin">
-            <img class="img-circle gridimage" src="../assets/img/{{item.image}}">
-        </div>
-        <div class="column col-md-8 col10xmargin">
-            <h4>{{item.title}}</h4>
-            <h5>{{item.band.name}}</h5>
-            <h6>{{item.genre.name}}</h6>
-            <button class="btn btn-info"><i class="fa fa-music"></i> Tracklist</button>
-        </div>
-    </div>
-</div>

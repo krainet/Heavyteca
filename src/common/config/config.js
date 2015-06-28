@@ -13,6 +13,6 @@ var CUSTOM_HEADER = 'Accept-Language';
 
 //To test login with facebook you need to setup krangular.com as your local virtualhost
 //to obtain login responses , try it!
-var LOGIN_FACEBOOK_REDIRECT_URI = "http://krangular.com:8080/auth/facebook/";
-var LOGIN_FACEBOOK_CLIENT_ID    = "723035201084388";
+var LOGIN_FACEBOOK_REDIRECT_URI = "http://develjitsu.com:9000/auth/facebook/";
+var LOGIN_FACEBOOK_CLIENT_ID    = "1601939936740503";
 var LOGIN_FACEBOOK_SCOPE        = ["email"];

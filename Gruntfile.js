@@ -46,7 +46,8 @@ module.exports = function (grunt) {
             coffeeunit: ['src/**/*.spec.coffee'],
             appTemplates: ['src/app/**/*.tpl.html'],
             commonTemplates: ['src/common/**/*.tpl.html'],
-            html: ['src/index.html', 'src/header.tpl.html', 'src/footer.tpl.html'],
+            headfooterTemplates: ['src/*.tpl.html'],
+            html: ['src/index.html'],
             less: 'src/less/main.less'
         },
         /**
@@ -227,6 +228,7 @@ module.exports = function (grunt) {
                     '<%= build_dir %>/src/**/*.js',
                     '<%= html2js.app.dest %>',
                     '<%= html2js.common.dest %>',
+                    '<%= html2js.headfooter.dest %>',
                     'module.suffix'
                 ],
                 dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -372,6 +374,14 @@ module.exports = function (grunt) {
                 },
                 src: ['<%= app_files.commonTemplates %>'],
                 dest: '<%= build_dir %>/templates-common.js'
+            },
+            //for header & footer
+            headfooter: {
+                options: {
+                    base: 'src/'
+                },
+                src: ['<%= app_files.headfooterTemplates %>'],
+                dest: '<%= build_dir %>/templates-headfooter.js'
             }
         },
         /**
@@ -393,6 +403,7 @@ module.exports = function (grunt) {
                     '<%= build_dir %>/src/**/*.js',
                     '<%= html2js.common.dest %>',
                     '<%= html2js.app.dest %>',
+                    '<%= html2js.headfooter.dest %>',
                     '<%= vendor_files.css %>',
                     '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
@@ -492,6 +503,7 @@ module.exports = function (grunt) {
                     '<%= vendor_files.js %>',
                     '<%= html2js.app.dest %>',
                     '<%= html2js.common.dest %>',
+                    '<%= html2js.headfooter.dest %>',
                     '<%= test_files.js %>'
                 ]
             }
@@ -579,7 +591,8 @@ module.exports = function (grunt) {
             tpls: {
                 files: [
                     '<%= app_files.appTemplates %>',
-                    '<%= app_files.commonTemplates %>'
+                    '<%= app_files.commonTemplates %>',
+                    '<%= app_files.headfooterTemplates %>'
                 ],
                 tasks: ['html2js']
             },
@@ -588,7 +601,7 @@ module.exports = function (grunt) {
              */
             less: {
                 files: ['src/**/*.less'],
-                tasks: ['less:build']
+                tasks: ['less:build','concat:build_css', 'copy:build_app_assets']
             },
             /**
              * When a JavaScript unit test file changes, we only want to lint it and
@@ -639,7 +652,7 @@ module.exports = function (grunt) {
     // The 'build' task gets your app ready to run for development and testing.
     grunt.registerTask('build', [
         'clean:all', 'html2js', 'jshint', 'coffeelint', 'coffee', 'less:build',
-        'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets', 'copy:extra_templates',
+        'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
         'copy:build_appjs', 'copy:build_vendorjs', 'ngAnnotate:build', 'index:build', 'karmaconfig',
         'karma:continuous'
     ]);
@@ -683,34 +696,6 @@ module.exports = function (grunt) {
         // this.data.dir comes from either build:dir, compile:dir, or karmaconfig:dir in the index config defined above
         // see - http://gruntjs.com/api/inside-tasks#this.data for documentation
         grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
-            process: function (contents, path) {
-                // These are the variables looped over in our index.html exposed as "scripts", "styles", and "version"
-                return grunt.template.process(contents, {
-                    data: {
-                        scripts: jsFiles,
-                        styles: cssFiles,
-                        version: grunt.config('pkg.version'),
-                        author: grunt.config('pkg.author'),
-                        date: grunt.template.today("yyyy")
-                    }
-                });
-            }
-        });
-        grunt.file.copy('src/header.tpl.html', this.data.dir + '/header.tpl.html', {
-            process: function (contents, path) {
-                // These are the variables looped over in our index.html exposed as "scripts", "styles", and "version"
-                return grunt.template.process(contents, {
-                    data: {
-                        scripts: jsFiles,
-                        styles: cssFiles,
-                        version: grunt.config('pkg.version'),
-                        author: grunt.config('pkg.author'),
-                        date: grunt.template.today("yyyy")
-                    }
-                });
-            }
-        });
-        grunt.file.copy('src/footer.tpl.html', this.data.dir + '/footer.tpl.html', {
             process: function (contents, path) {
                 // These are the variables looped over in our index.html exposed as "scripts", "styles", and "version"
                 return grunt.template.process(contents, {

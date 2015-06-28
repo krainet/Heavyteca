@@ -1,0 +1,22 @@
+<div class="row cellAlbum">
+    <div class="column col-md-4 col10xmargin">
+        <img class="img-circle gridimage" src="../assets/img/{{::model.image}}">
+    </div>
+    <div class="column col-md-4 col10xmargin text-center ">
+        <h4><span style="color:lightgrey;">Album: </span> {{::model.title}}</h4>
+        <h6><span style="color:lightgrey;">Band: </span> {{::model.band.name}}</h6>
+        <h6><span style="color:lightgrey;">Gender: </span> {{::model.genre.name}}</h6>
+        <button class="btn btn-info btn-xs"><i class="fa fa-music"></i> Tracklist</button>
+    </div>
+    <div class="column col-md-4 col10xmargin text-center" style="text-align:right">
+        <p><button class="btn btn-info btn-xs" ng-click="openModal('',model)"><i class="fa fa-eye"></i> View album details</button></p>
+        <p><button class="btn btn-info btn-xs" ng-click="goToBand(model.band.name)"><i class="fa fa-users"></i> Go to Band</button></p>
+
+        <button ng-hide="isFavorite(model.id)" ng-click="saveFavorite(model.id);" class="btn btn-info btn-xs"><i class="fa fa-star-o"> Make Favorite</i></button>
+        <button ng-show="isFavorite(model.id)"  ng-click="deleteFavorite(model.id);" class="btn btn-danger btn-xs"><i class="fa fa-star"> Remove Favorite</i></button>
+
+        <span ng-show="isFavorite(model.album.id)" style="cursor:pointer;">es favorito</span>
+        <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+    </div>
+
+</div>

@@ -1,31 +1,11 @@
 <div class="row">
-    <div class="column col-md-12">
-        <img src="../assets/imglocal/guitarbackground.png" class="img-responsive img75percent">
-        <span class="gridtitle">HEAVY TECA - {{model.pageTitle}}</span>
+    <div class="column col-md-6 text-left">
+        <img style="margin-left:2px;" src="../assets/imglocal/guitarbackground.png" class="img-responsive img35percent"><span style="font-size: 2em;">HEAVYTECA</span>
+    </div>
+    <div class="column col-md-6">
+        <p></p>
+        <p><span class="pull-right pulldown sectiontitle">Bandas</span></p>
     </div>
 </div>
 
-<p>&nbsp;</p>
-
-<div class="row">
-    <div class="column col-md-12 topborder backgroundgrid" ng-repeat="item in model.data">
-        <div class="column col-md-4 col10xmargin">
-            <h5>{{item.name}}</h5>
-            <h5>Origin: {{item.origin}}</h5>
-        </div>
-        <div class="column col-md-8 col10xmargin">
-            <div class="row">
-                <div class="column col-md-4" style="width:49%">
-                    <ul class="ultoleft">
-                        <li ng-repeat="album in item.albums">{{album.title}} ({{album.year}})</li>
-                    </ul>
-                </div>
-                <div class="column col-md-4" style="width:49%">
-                    <ul class="ultoleft">
-                        <li ng-repeat="member in item.members">{{member.name}}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<table-element-banda ng-repeat="item in model.data" model="item"></table-element-banda>

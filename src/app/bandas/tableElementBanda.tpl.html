@@ -1,0 +1,31 @@
+<div class="row cellAlbum">
+    <div class="column col-md-6 col10xmargin text-left">
+        <h3><span style="color:lightgrey;">Band: </span>{{::model.name}}</h3>
+        <h4><span style="color:lightgrey;">Origin's at: </span></h4><span style="font-size:0.8em;">{{::model.origin}}</span>
+    </div>
+    <div class="column col-md-6 col10xmargin text-left">
+        <h3><span style="color:lightgrey;">Members: </span></h3>
+        <ul style="text-align: left">
+            <li ng-repeat="member in model.members">{{::member.name}} (Instruments: <span ng-repeat="ins in member.instruments">{{::ins}}{{$last ? ')' : ', '}}</span> </li>
+        </ul>
+    </div>
+    <div class="row"><div class="col col-md-12 text-center"><hr style="width:98%"></div></div>
+    <div class="row">
+        <div class="col col-md-6 text-left">
+            <h3><span style="color:lightgrey;">&nbsp;His Album/s: </span></h3>
+            <ul>
+                <li ng-repeat="album in model.albums">
+                    <i class="fa fa-eye btn-info btn-xs" style="cursor:pointer;" ng-click="gotoAlbum(album.id)"> Go to</i> {{::album.title}}&nbsp;({{album.year}})<br>
+<!--
+                    &nbsp;&nbsp;<span style="color:darkslategrey;font-weight: bold;font-size:0.8em;">Year: </span><span style="font-size:0.8em;">{{::album.year}}&nbsp;</span><br>
+                    &nbsp;&nbsp;<span style="color:darkslategrey;font-weight: bold;font-size:0.8em;">Genre: </span><span style="font-size:0.8em;">{{album.genre.name}}</span><br>
+-->
+                </li>
+            </ul>
+        </div>
+        <div class="col col-md-6 text-left">
+            <h3><span style="color:lightgrey;">&nbsp;Album Covers: </span></h3>
+        </div>
+    </div>
+</div>
+

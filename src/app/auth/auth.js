@@ -37,7 +37,7 @@
                         }
                     });
 
-            FacebookProvider.init('357912714370104');
+            FacebookProvider.init(LOGIN_FACEBOOK_CLIENT_ID);
 
         }]);
 

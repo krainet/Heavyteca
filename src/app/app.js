@@ -16,13 +16,17 @@
                                     $log.warn('App::ResolveData::');
 
                                     var def = $q.defer();
+                                    def.resolve('OK');
+                                    return def.promise;
+
+/*                                    var def = $q.defer();
                                     globalService.api().get(function (data) {
                                         def.resolve(data);
                                         $log.warn(data);
                                     }, function (err) {
                                         def.reject(err);
                                     });
-                                    return def.promise;
+                                    return def.promise;*/
                                 }])
                         },
                         views: {
@@ -86,6 +90,7 @@
     'ui.bootstrap',
     'templates-app',
     'templates-common',
+    'templates-headfooter',
     'ui.router.state',
     'ui.router',
     'cInterceptor'
