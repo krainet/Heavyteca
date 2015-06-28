@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="column col-md-12">
+        <img src="../assets/imglocal/guitarbackground.png" class="img-responsive img75percent">
+        <span class="gridtitle">HEAVY TECA - {{model.pageTitle}}</span>
+    </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="row">
+    <div class="column col-md-12 topborder backgroundgrid" ng-repeat="item in model.data">
+        <div class="column col-md-4 col10xmargin">
+            <img class="img-circle gridimage" src="../assets/img/{{item.image}}">
+        </div>
+        <div class="column col-md-8 col10xmargin">
+            <h4>{{item.title}}</h4>
+            <h5>{{item.band.name}}</h5>
+            <h6>{{item.genre.name}}</h6>
+            <button class="btn btn-info"><i class="fa fa-music"></i> Tracklist</button>
+        </div>
+    </div>
+</div>
