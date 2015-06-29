@@ -24,7 +24,6 @@
                 $scope.model = {};
                 $scope.model.pageTitle = $state.current.data.pageTitle;
                 generosService.getGeneros().then(function (data) {
-                    console.log(data);
                     $scope.model.data=data;
                 });
             };

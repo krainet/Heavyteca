@@ -20,12 +20,10 @@
     app.controller('BandasController', ['$scope', '$log','$state','bandasService','$stateParams',
         function ($scope, $log,$state,bandasService,$stateParams) {
             $log.info('App:: Starting BandasController');
-            console.log($stateParams);
             var init = function () {
                 $scope.model = {};
                 $scope.model.pageTitle = $state.current.data.pageTitle;
                 bandasService.getBandas($stateParams.id_banda).then(function (data) {
-                    console.log(data[0]);
                     $scope.model.data=data;
                 });
 

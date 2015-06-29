@@ -57,7 +57,6 @@
 
                 $scope.scroll.loading = true;
                 infiniteService.getBacon().then(function (data) {
-                    console.log(data);
                     items.desc = data.data.lorem;
                     items.name = 'Ramon';
                     items.surname = 'Alberti';

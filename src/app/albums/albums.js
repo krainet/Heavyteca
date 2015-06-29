@@ -64,7 +64,6 @@
                     //no hacer nada
                 }else{
                     var index = misFav.indexOf(id_album);
-                    console.log(index);
                     if(index!=-1) {
                         misFav.splice(index, 1);
                     }
@@ -166,7 +165,6 @@
                         //no hacer nada
                     }else{
                         var index = misFav.indexOf(id_album);
-                        console.log(index);
                         if(index!=-1) {
                             misFav.splice(index, 1);
                         }
