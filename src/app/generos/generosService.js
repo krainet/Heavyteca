@@ -29,7 +29,6 @@ angular.module('generosService', [])
                         var def = $q.defer();
                         this.api().get({}, {}, function (data) {
                             $log.warn('Api::data:: ');
-                            $log.warn(data);
                             def.resolve(data);
                         }, function (err) {
                             def.reject(err);
